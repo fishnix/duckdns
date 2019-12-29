@@ -73,7 +73,7 @@ func startUpdateRoutine(frequency time.Duration) chan bool {
 			case <-ticker.C:
 				updater := client.NewClient(strings.Join(domain, ","), token, verbose)
 				if err := updater.Update("", ""); err != nil {
-					log.Fatalf("failed to update IP: %s", err)
+					log.Errorf("failed to update IP: %s", err)
 				}
 				log.Infof("successfully updated IP with duckdns")
 			}
